@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+require __DIR__ . '/admin/admin-routes.php'; //Ok
+
+require __DIR__ . '/user/user-routes.php'; //OK
