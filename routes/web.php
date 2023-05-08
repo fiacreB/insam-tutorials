@@ -1,6 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\Lesson;
+use App\Models\ExamAnswer;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\User\ExamenController;
+use App\Http\Controllers\TestController;
+use App\Models\Course;
+use App\Models\ExamAttempt;
+use App\Models\Chapter;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +24,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(
+    [
+        'verify' => true
+    ]
+);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-require __DIR__ . '/admin/admin-routes.php'; //Ok
 
-require __DIR__ . '/user/user-routes.php'; //OK
+// Route::middleware([])->group(function () {
+//     Route::get('/', function (Request $request, Chapter $sujet, Course $chapitre, Category $category) {
+//         $populars_videos = Course::all()->sortByDesc('visits')->take(6);
+//         $news_videos = Course::all()->sortByDesc('created_at')->take(6);
+//         $categories = Category::all()->sortByDesc('created_at')->take(7);
+//         $courses = Course::all();
+//         $Lesson = Lesson::all();
+//         $attemptData =  ExamAttempt::where('chapter_id', $request->chapter_id)->with(['user', 'sujet'])->get();
+
+//         return view('index', compact('category', 'chapitre', 'sujet', 'populars_videos', 'news_videos', 'categories', 'courses', 'Lesson', 'attemptData'));
+//     })->name('wellecome'); //OK
+
+//     require __DIR__ . '/user/user-routes.php';
+//     Route::get('/review-student-qna', [ExamenController::class, 'reviewStudentQna'])->name('resultStudentQna');
+// });
+
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    require __DIR__ . '/admin/admin-routes.php';
+});
