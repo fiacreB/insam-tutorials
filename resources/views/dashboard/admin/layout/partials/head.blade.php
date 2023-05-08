@@ -13,7 +13,7 @@
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ asset('/admin/css/responsive.css') }}">
 <!-- Title -->
-<title>Edumy - LMS Online Education Course & School HTML Template</title>
+<title>@yield('title')</title>
 <!-- Favicon -->
 <link href="{{ asset('/admin/images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="{{ asset('/admin/images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />

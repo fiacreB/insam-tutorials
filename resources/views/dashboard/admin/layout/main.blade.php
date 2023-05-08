@@ -12,7 +12,15 @@
         @include('dashboard.admin.layout.partials.header')
 
         <main>
-            @yield('content')
+            <section class="our-dashbord dashbord pb50">
+                <div class="container-fluid">
+                    <div class="row">
+                        @include('dashboard.admin.layout.partials.leftaside')
+                        @yield('content')
+                    </div>
+                </div>
+            </section>
+            <a class="scrollToHome" href="#"><i class="flaticon-up-arrow-1"></i></a>
         </main>
     </div>
 
