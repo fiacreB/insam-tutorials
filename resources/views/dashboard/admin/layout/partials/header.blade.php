@@ -262,7 +262,15 @@
                                 <a class="dropdown-item" href="#">Messages</a>
                                 <a class="dropdown-item" href="#">Purchase history</a>
                                 <a class="dropdown-item" href="#">Help</a>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Log out') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
