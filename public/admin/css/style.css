@@ -13855,3 +13855,32 @@ header.header-nav.menu_style_home_one.new_style .sign_up_btn li.list_s{
   background-color: rgb(1, 46, 110);
   padding: 8px 25px;
 }
+
+
+
+/* Mon style */
+.btn-soft-danger {
+    background-color: rgba(235, 182, 182, 0.736) !important;
+    width: 30px;
+    height: 35px;
+    margin-left: 12px;
+}
+
+.btn-soft-danger span {
+    color: rgba(204, 58, 58, 0.849);
+}
+
+.btn-soft-primary {
+    background-color: rgb(231, 180, 157) !important;
+    width: 30px;
+    height: 35px;
+}
+
+.btn-soft-primary span {
+    color: rgba(194, 84, 53, 0.9);
+}
+i {
+  margin-left: -2px;
+  font-size: 28px;
+  margin-right: 12px;
+}

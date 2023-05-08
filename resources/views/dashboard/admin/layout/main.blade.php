@@ -8,20 +8,21 @@
 <body>
     <div class="wrapper">
         <div class="preloader"></div>
-
         @include('dashboard.admin.layout.partials.header')
-
-        <main>
-            <section class="our-dashbord dashbord pb50">
-                <div class="container-fluid">
-                    <div class="row">
-                        @include('dashboard.admin.layout.partials.leftaside')
-                        @yield('content')
+        <section class="our-dashbord dashord pb50">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            @include('dashboard.admin.layout.partials.header2')
+                            @include('dashboard.admin.layout.partials.leftaside')
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
-            </section>
-            <a class="scrollToHome" href="#"><i class="flaticon-up-arrow-1"></i></a>
-        </main>
+            </div>
+        </section>
+        <a class="scrollToHome" href="#"><i class="flaticon-up-arrow-1"></i></a>
     </div>
 
     @include('dashboard.admin.layout.partials.footer_script')

@@ -32,6 +32,9 @@ Route::prefix('dashboard')->group(function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::get('/admin/admins', [HomeController::class, 'adminDashboard'])->name('store'); //ok
+    Route::post('/add-admin', [HomeController::class, 'store'])->name('addadmin'); //ok
+    Route::post('/edit-admin', [HomeController::class, 'edit'])->name('edit'); //ok
+    Route::post('/delete-admin', [HomeController::class, 'delete'])->name('delete'); //ok
 
     //     Route::group([
     //         'prefix' => 'categories',

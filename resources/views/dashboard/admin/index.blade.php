@@ -2,7 +2,7 @@
 @section('title', 'Admin | UIEs/Insam_tutorias')
 @section('content')
     <!-- Our Dashbord -->
-    <div class="col-sm-12 col-lg-8 col-xl-10">
+    <div class="col">
         <div class="row">
             <div class="col-lg-12">
                 <nav class="breadcrumb_widgets" aria-label="breadcrumb mb30">
@@ -116,6 +116,7 @@
                 </div>
             </div>
         </div>
+
         @include('dashboard.admin.layout.partials.footer')
     </div>
 @endsection
