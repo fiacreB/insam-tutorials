@@ -248,9 +248,12 @@
                 </li>
                 <li class="user_setting">
                     <div class="dropdown">
+                        @php
+                            $user = Auth::user();
+                        @endphp
                         <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img
-                                class="rounded-circle" src="{{ asset('/admin/images/team/e1.png') }}"
-                                alt="e1.png"></a>
+                                alt="{{ $user->name }}" src="{{ Storage::url($user->image) }}"
+                                class="rounded-circle" /></a>
                         <div class="dropdown-menu">
                             <div class="user_set_header">
                                 <img class="float-left" src="{{ asset('/admin/images/team/e1.png') }}"

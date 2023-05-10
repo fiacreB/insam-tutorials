@@ -5,7 +5,7 @@
     content="academy, college, coursera, courses, education, elearning, kindergarten, lms, lynda, online course, online education, school, training, udemy, university">
 <meta name="description" content="Edumy - LMS Online Education Course & School HTML Template">
 <meta name="CreativeLayers" content="ATFN">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <!-- css file -->
 <link rel="stylesheet" href="{{ asset('/admin/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/admin/css/style.css') }}">
