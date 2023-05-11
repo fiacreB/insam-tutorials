@@ -29,25 +29,20 @@
                     <!-- Level Two-->
                     <ul>
                         <li>
-                            <a href="/courses">Cours</a>
+                            <a href="{{ route('layout-frontend.lessons.index') }}">Formations</a>
                         </li>
-                        <li><a href="page-instructors.html">Categories</a></li>
-                        <li><a href="page-instructors-single.html">Instructor Single</a></li>
+                        <li><a href="{{ route('layout-frontend.categories.index') }}">Categories</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
-                </li>
-                <li>
-                    <a href="#"><span class="title">Pages</span></a>
+                    <a href="#"><span class="title">Bibliotheque</span></a>
                     <ul>
-                        <li><a href="page-about.html">About Us</a></li>
-                        <li><a href="page-gallery.html">Gallery</a></li>
-                        <li><a href="page-gallery2.html">Video Gallery</a></li>
+                        <li><a href="page-event.html">Event List</a></li>
+                        <li><a href="page-event-single.html">Event Single</a></li>
                     </ul>
                 </li>
                 <li class="last">
-                    <a href="page-contact.html"><span class="title">Contact</span></a>
+                    <a href="/contact"><span class="title">Contact</span></a>
                 </li>
             </ul>
             <ul class="header_user_notif pull-right dn-smd">
@@ -122,21 +117,6 @@
             </li>
             <li>
                 <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
-            </li>
-            <li><span>Pages</span>
-                <ul>
-                    <li><span>Shop Pages</span>
-                        <ul>
-                            <li><a href="page-shop.html">Shop</a></li>
-                            <li><a href="page-shop-single.html">Shop Single</a></li>
-                            <li><a href="page-shop-cart.html">Cart</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="page-about.html">About Us</a></li>
-                    <li><a href="page-gallery.html">Gallery</a></li>
-                    <li><a href="page-gallery2.html">Video Gallery</a></li>
-                    <li><a href="page-faq.html">Faq</a></li>
-                </ul>
             </li>
             <li><a href="page-contact.html">Contact</a></li>
             @auth
