@@ -30,7 +30,7 @@ class LessonController extends Controller
     {
         $chapters = Chapter::all();
         $lessons = Lesson::all();
-        return view('layout-frontend.lessons.index', compact('chapter', 'chapters', 'lessons'));
+        return view('frontend.course.index', compact('chapter', 'chapters', 'lessons'));
     }
 
     public function allVideos()
