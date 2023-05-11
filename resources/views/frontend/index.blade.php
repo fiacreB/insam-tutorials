@@ -1,0 +1,200 @@
+@extends('frontend.partials.main')
+
+@section('content')
+<div class="home1-mainslider">
+    <div class="container-fluid p0">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-banner-wrapper">
+                    <div class="banner-style-one owl-theme owl-carousel">
+                        <div class="slide slide-one" style="background-image: url(images/home/1.jpg); height: 95vh;">
+                            <div class="container">
+                                <div class="row home-content">
+                                    <div class="col-lg-12 text-center p0">
+                                        <h3 class="banner-title">Self EducatIon Resources and Infos</h3>
+                                        <p>Technology is brining a massive wave of evolution on learning things on different ways.</p>
+                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide slide-one" style="background-image: url(images/home/2.jpg);height: 95vh;">
+                            <div class="container">
+                                <div class="row home-content">
+                                    <div class="col-lg-12 text-center p0">
+                                        <h3 class="banner-title">Self EducatIon Resources and Infos</h3>
+                                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
+                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide slide-one" style="background-image: url(images/home/3.jpg);height: 95vh;">
+                            <div class="container">
+                                <div class="row home-content">
+                                    <div class="col-lg-12 text-center p0">
+                                        <h3 class="banner-title">Find the Best Courses</h3>
+                                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
+                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.main-banner-wrapper -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- School Category Courses -->
+<section id="our-courses" class="our-courses pt90 pt650-992">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="#our-courses">
+                    <div class="mouse_scroll">
+                        <div class="icon"><span class="flaticon-download-arrow"></span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="main-title text-center">
+                    <h3 class="mt0">Les Categories De Cours</h3>
+                    {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            @forelse ($categories as $category)
+                <div class="col-sm-6 col-lg-3">
+                    <div class="img_hvr_box" style="background-image: url({{ Storage::url($category->image)}});">
+                        <div class="overlay">
+                            <div class="details">
+                                <h5>{{$category->title}}</h5>
+                                <p>{{$category->description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                
+            <div class="col-sm-6 col-lg-3">
+                <div class="img_hvr_box" style="background-image: url(images/courses/1.jpg);">
+                    <div class="overlay">
+                        <div class="details">
+                            <h5>Pas de cours pour le moment</h5>
+                            <p>Over 800 Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            @endforelse
+
+            
+            
+
+            <div class="col-lg-6 offset-lg-3">
+                <div class="courses_all_btn text-center">
+                    <a class="btn btn-transparent" href="#">Voir toutes les categories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider -->
+{{-- <section class="divider_home1 bg-img2 parallax" data-stellar-background-ratio="0.3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="divider-one">
+                    <p class="color-white">STARTING ONLINE LEARNING</p>
+                    <h1 class="color-white text-uppercase">Enhance your skIlls wIth best OnlIne courses</h1>
+                    <a class="btn btn-transparent divider-btn" href="#">Get Started Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+
+<!-- Top Courses -->
+<section id="top-courses" class="top-courses pb30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="main-title text-center">
+                    <h3 class="mt0">Nos dernieres formations</h3>
+                    <p>Parcourez nos formations les plus recentes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-lg-12">
+                 <div class="emply-text-sec">
+                     <div class="row" id="masonry_abc">
+
+                        @forelse ($news_courses as $course)
+                        <div class="col-md-6 col-lg-4 col-xl-3 business design">
+                            <div class="top_courses">
+                                <div class="thumb">
+                                    <img class="img-whp" src="{{ Storage::url($course->image)}}" alt="t1.jpg">
+                                    <div class="overlay">
+                                        <div class="tag">{{$course->category->title}}</div>
+                                        <div class="icon"><span class="flaticon-like"></span></div>
+                                        <a class="tc_preview_course" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div class="tc_content">
+                                        <p>Ali TUFAN</p>
+                                        <h5>{{$course->title}}</h5>
+                                        <ul class="tc_review">
+                                            {{-- <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="list-inline-item"><a href="#">(6)</a></li> --}}
+                                        </ul>
+                                    </div>
+                                    <div class="tc_footer">
+                                        <ul class="tc_meta float-left">
+                                            {{-- <li class="list-inline-item"><a href="#"><i class="flaticon-profile"></i></a></li>
+                                            <li class="list-inline-item"><a href="#">1548</a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="flaticon-comment"></i></a></li>
+                                            <li class="list-inline-item"><a href="#">25</a></li> --}}
+                                        </ul>
+                                        <div class="tc_price float-right">
+                                            <div class="tag">
+                                                <a href="{{"/courses/$course->slug"}}">Afficher</a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        @empty
+                            
+                        @endforelse
+                         
+                        <div class="col-lg-6 offset-lg-3">
+                            <div class="courses_all_btn text-center">
+                                <a class="btn btn-transparent" href="/courses">Voir toutes les formations</a>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
