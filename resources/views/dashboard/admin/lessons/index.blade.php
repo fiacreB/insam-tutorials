@@ -83,10 +83,11 @@
                                             <small class="text-muted d-flex row">
                                                 <div class="col ">
                                                     <i class="bx bx-user"></i>&nbsp; <span
+                                                        class="bi bi-person-heart"></span><span
                                                         class="text-info">{{ $video->visits }}</span>
                                                     &nbsp;&nbsp;
-                                                    <i class="bx bx-heart"></i>&nbsp; <span
-                                                        class="text-success">{{ $video->likes->count() }}</span>
+                                                    <i class="bx bx-heart"></i>&nbsp; <span class="bi bi-suit-heart"></span>
+                                                    <span class="text-info">{{ $video->likes->count() }}</span>
                                                     &nbsp;&nbsp;
                                                 </div>
                                                 <div class="col text-right">
