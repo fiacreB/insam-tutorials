@@ -36,11 +36,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><span class="title">Bibliotheque</span></a>
-                    <ul>
-                        <li><a href="page-event.html">Event List</a></li>
-                        <li><a href="page-event-single.html">Event Single</a></li>
-                    </ul>
+                    <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
                 </li>
                 <li>
                     <a href="#"><span class="title">Pages</span></a>
@@ -58,29 +54,29 @@
                 <li class="user_setting">
                     <div class="dropdown">
                         @auth
-                        <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-                            {{Auth::user()->email}}
-                            {{-- <img alt="{{ $user->name }}" src="{{ Storage::url($user->image) }}" class="rounded-circle" /> --}}
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="user_set_header">
-                                <img class="float-left" src="{{ asset('/admin/images/team/e1.png') }}"
-                                    alt="e1.png">
-                                <p>{{Auth::user()->name}} <br><span class="address">{{Auth::user()->email}}</span></p>
-                            </div>
-                            <div class="user_setting_content">
-                                <a class="dropdown-item active" href="#">My Compte</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+                                {{ Auth::user()->email }}
+                                {{-- <img alt="{{ $user->name }}" src="{{ Storage::url($user->image) }}" class="rounded-circle" /> --}}
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="user_set_header">
+                                    <img class="float-left" src="{{ asset('/admin/images/team/e1.png') }}" alt="e1.png">
+                                    <p>{{ Auth::user()->name }} <br><span class="address">{{ Auth::user()->email }}</span>
+                                    </p>
+                                </div>
+                                <div class="user_setting_content">
+                                    <a class="dropdown-item active" href="#">My Compte</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    {{ __('Se Deconnecter') }}
-                                </a>
+                                        {{ __('Se Deconnecter') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                         @else
                             <a class="btn" href="{{ route('login') }}">
                                 Se Connecter
@@ -88,7 +84,7 @@
                             </a>
                         @endauth
 
-                        
+
                     </div>
                 </li>
             </ul>
@@ -118,17 +114,14 @@
             <li><span>Courses</span>
                 <ul>
                     <li><a href="/courses">Courses List</a>
-                        
+
                     </li>
                     <li><a href="/categories">Instructors</a></li>
                     <li><a href="page-instructors-single.html">Instructor Single</a></li>
                 </ul>
             </li>
-            <li><span>Events</span>
-                <ul>
-                    <li><a href="page-event.html">Event List</a></li>
-                    <li><a href="page-event-single.html">Event Single</a></li>
-                </ul>
+            <li>
+                <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
             </li>
             <li><span>Pages</span>
                 <ul>
@@ -147,18 +140,18 @@
             </li>
             <li><a href="page-contact.html">Contact</a></li>
             @auth
-            <li><a class="" href="#">Mon Compte</a></li>
+                <li><a class="" href="#">Mon Compte</a></li>
                 <li><a class="" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                    {{ __('Se Deconnecter') }}
-                </a></li>
+                        {{ __('Se Deconnecter') }}
+                    </a></li>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             @else
-            <li><a href="{{ route("login") }}"><span class="flaticon-user"></span> Login</a></li>
+                <li><a href="{{ route('login') }}"><span class="flaticon-user"></span> Login</a></li>
             @endauth
         </ul>
     </nav>

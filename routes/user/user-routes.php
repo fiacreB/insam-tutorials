@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\BookCategoryController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\user\BookCategoryController;
+use App\Http\Controllers\user\BookController;
 use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\ExamenController;
 use Illuminate\Support\Facades\Route;
@@ -55,8 +55,8 @@ Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], functi
         Route::get('/video/{video}', [ChapterController::class, 'showVideo'])->name('video');
     });
     Route::group([
-        'prefix' => 'book.categories',
-        'as' => 'book.categories.'
+        'prefix' => 'book_categories',
+        'as' => 'book_categories.'
     ], function () {
         Route::get('', [BookCategoryController::class, 'index'])->name('index');
         Route::get('/{bookCategory}', [BookCategoryController::class, 'show'])->name('show');

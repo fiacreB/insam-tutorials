@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ asset('/admin/js/chart.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/js/chart-custome.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/js/bootstrap-select.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/admin/js/isotop.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/js/snackbar.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/js/simplebar.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/js/parallax.js') }}"></script>
