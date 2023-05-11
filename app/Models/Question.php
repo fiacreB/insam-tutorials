@@ -19,7 +19,7 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class, 'question_id', 'id');
     }
-    public function sujet()
+    public function chapter()
     {
         return  $this->belongsTo('\App\Models\Chapter', 'chapter_id');
     }

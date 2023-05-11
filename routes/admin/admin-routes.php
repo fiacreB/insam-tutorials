@@ -1,16 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CourseController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChapterController;
-use App\Http\Controllers\LessonController;
-use App\Http\Controllers\CoursController;
+use App\Http\Controllers\admin\ChapterController;
+use App\Http\Controllers\admin\LessonController;
 use App\Http\Controllers\admin\TestController;
 use App\Http\Controllers\admin\BookCategoryController;
 use App\Http\Controllers\admin\BookController;
-use App\Http\Controllers\admin\BookNewController;
 use App\Http\Controllers\admin\HomeController;
+use App\Models\Chapter;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,18 +90,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         'as' => 'tests.'
     ], function () {
 
+        Route::get('/', [TestController::class, 'index'])->name('index'); //ok
         Route::get('{chapter}', [TestController::class, 'create'])->name('create'); //ok
-
         Route::post('store/{chapter}', [TestController::class, 'store'])->name('store'); //ok
-
         Route::post('/update-delete-ans', [TestController::class, 'updateQna'])->name('updateQna');
-
         Route::get('delete/{question}', [TestController::class, 'destroy'])->name('delete'); //ok
-
-
         Route::get('/delete-ans/{chapter}', [TestController::class, 'deleteAns'])->name('deleteAns');
         Route::get('/get-qna-details /{chapter}', [TestController::class, 'getQnaDetails'])->name('getQnaDetails'); //OK
-
         //exam marks route
         Route::get('/admin/marks', [TestController::class, 'loadMarks'])->name('loadMarks'); //OK
         Route::post('/update-marks', [TestController::class, 'updateMarks'])->name('updateMarks'); //OK
@@ -129,58 +123,50 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         'prefix' => 'chapters',
         'as' => 'chapters.'
     ], function () {
-
+        Route::get('/', [ChapterController::class, 'index'])->name('index'); //Ok
         Route::get('{course:slug}', [ChapterController::class, 'create'])->name('create'); //ok
         Route::post('store/{course}', [ChapterController::class, 'store'])->name('store'); //ok
-
+        Route::post('all-store/', [ChapterController::class, 'allStore'])->name('allStore'); //ok
         Route::post('edit/{course}', [ChapterController::class, 'edit'])->name('edit'); //OK
-
         Route::get('delete-chapter/{course}', [ChapterController::class, 'deleteChapter'])->name('deleteChapter'); //OK
         Route::get('show/{chapter}', [ChapterController::class, 'adminShow'])->name('show'); //ok
 
     });
 
-    //     Route::group([
-    //         'prefix' => 'categories',
-    //         'as' => 'categories.'
-    //     ], function () {
-    //         Route::get('create/', [CategoryController::class, 'create'])->name('create');
-    //         Route::get('', [CategoryController::class, 'index'])->name('index'); //ok
-    //         Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('show'); //ok
-
-    //         Route::post('', [CategoryController::class, 'store'])->name('store');
-
-    //         Route::post('/{category}', [CategoryController::class, 'update'])->name('update'); //ok
-    //         Route::get('edit/{category}', [CategoryController::class, 'edit'])->name('edit'); //ok
-
-    //         Route::get('delete/{category:id}', [CategoryController::class, 'destroy'])->name('delete'); //ok
-    //     });
+    Route::group([
+        'prefix' => 'categories',
+        'as' => 'categories.'
+    ], function () {
+        Route::get('', [CategoryController::class, 'index'])->name('index'); //ok
+        Route::get('create/', [CategoryController::class, 'create'])->name('create');
+        Route::post('create/', [CategoryController::class, 'store'])->name('store');
+        Route::get('edit/{category}', [CategoryController::class, 'edit'])->name('edit'); //ok
+        Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('show'); //ok
+        Route::post('/{category}', [CategoryController::class, 'update'])->name('update'); //ok
+        Route::get('delete/{category:id}', [CategoryController::class, 'destroy'])->name('delete'); //ok
+    });
 
 
 
-    //     Route::group([
-    //         'prefix' => 'lessons',
-    //         'as' => 'lessons.'
-    //     ], function () {
-    //         Route::get('/', 'LessonController@index');
-    //         Route::get('{chapter:slug}', [LessonController::class, 'create'])->name('create'); //ok
+    Route::group([
+        'prefix' => 'lessons',
+        'as' => 'lessons.'
+    ], function () {
+        Route::get('/', 'LessonController@index');
+        Route::get('{chapter:slug}', [LessonController::class, 'create'])->name('create'); //ok
+        Route::get('lien/{chapter}', [LessonController::class, 'createlien'])->name('createlien'); //ok
+        Route::post('store/{chapter}', [LessonController::class, 'store'])->name('store'); //ok
+        Route::post('storelink/{chapter}', [LessonController::class, 'storelink'])->name('storelink'); //ok
+        Route::get('edit/{lesson}', [LessonController::class, 'edit'])->name('edit'); //ok
+        Route::get('show/{course}', [LessonController::class, 'show'])->name('show');
+        Route::post('update/{lesson}', [LessonController::class, 'update'])->name('update'); //ok
+        Route::get('delete/{lesson}', [LessonController::class, 'destroy'])->name('delete'); //ok
+        Route::get('/', [LessonController::class, 'allVideos'])->name('allVideos'); //ok
+        Route::get('/all-create-videos/{user}', [LessonController::class, 'allCreate'])->name('allCreate'); //ok
+        Route::get('/all-create-video-lien/{user}', [LessonController::class, 'allCreateLien'])->name('allcreatelien'); //ok
+    });
 
-    //         Route::get('lien/{chapter}', [LessonController::class, 'createlien'])->name('createlien'); //ok
 
-    //         Route::post('store/{chapter}', [LessonController::class, 'store'])->name('store'); //ok
-
-    //         Route::post('storelink/{chapter}', [LessonController::class, 'storelink'])->name('storelink'); //ok
-
-    //         Route::get('edit/{lesson}', [LessonController::class, 'edit'])->name('edit'); //ok
-
-    //         Route::get('show/{course}', [LessonController::class, 'show'])->name('show');
-
-    //         Route::post('update/{lesson}', [LessonController::class, 'update'])->name('update'); //ok
-
-    //         Route::get('delete/{lesson}', [LessonController::class, 'destroy'])->name('delete'); //ok
-    //     });
-
-    //    
 
 
     //     //students route

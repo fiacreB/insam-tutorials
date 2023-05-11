@@ -18,7 +18,7 @@ class Exam extends Model
     ];
 
 
-    public function subjects()
+    public function chapter()
     {
         return  $this->belongsTo('\App\Models\Chapter', 'chapter_id');
     }

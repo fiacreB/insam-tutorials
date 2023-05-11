@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Chapter;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\User;
@@ -19,24 +20,23 @@ class CourseController extends Controller
         $lessons = Lesson::all();
         $courses = Course::orderBy('created_at', 'desc')->paginate(10);
         $user = Auth::user()->id;
-        return view('dashboard.admin.courses.index', ['courses' => $courses], compact('lessons', 'user'));
+        $catego = Category::with('courses')->first();
+        return view('dashboard.admin.courses.index', ['courses' => $courses], compact('lessons', 'user', 'catego'));
     }
 
     function create(Category $category)
     {
-        return view('admin.courses.create', ['category' => $category]);
+        return view('dashboard.admin.courses.create', ['category' => $category]);
     }
     public function store(Request $request, Category $category, Course $course)
     {
-
-
         $request->validate([
             'title' => 'required|string',
             //'description' => 'string',
             //'image' => 'required',
         ]);
 
-        $image_path = null;
+        $image_path = "rien";
 
         if ($request->has('image')) {
             $filename = rand() . '.' . $request->image->extension();
@@ -56,7 +56,7 @@ class CourseController extends Controller
             'description' => $request->description,
             'category_id' => $request->category_id
         ]);
-        return redirect()->route('admin.categories.show', ['category' => $category->slug])->with('success', 'Cours créer avec succè');
+        return redirect()->route('admin.categories.show', ['category' => $category->slug])->with('success', 'Cours créer avec succès');
     }
     function allCreate()
     {
@@ -68,8 +68,6 @@ class CourseController extends Controller
 
     public function allStore(Request $request)
     {
-
-
         $request->validate([
             'title' => 'required|string',
             'category_id' => 'required'
@@ -106,7 +104,8 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        return view('admin.courses.show', compact('course'));
+        $chapters = Chapter::orderBy('created_at', 'desc')->paginate(10);
+        return view('dashboard.admin.courses.show-chapitre', compact('course', 'chapters'));
     }
 
     public function edit(Course $course, Category $category)
@@ -149,8 +148,8 @@ class CourseController extends Controller
         }
         $courses = Course::all();
 
-        return redirect()->route('admin.courses.index')->with('success', 'Cours mis a jour avec succès');
-        // return redirect()->route('admin.courses.index')->with('success', 'Cours créer avec succès');
+        $category = Category::where('id', $request->category_id)->first();
+        return redirect()->route('admin.categories.show', ['category' => $category->slug])->with('success', 'Cours mis a jour avec succès');
     }
 
     public function deletecourse(Course $course, Category $category)

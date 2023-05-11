@@ -29,7 +29,7 @@
 
                                         <li class="list-inline-item">
                                             <a href="{{ route('admin.courses.allCreate', $user) }}"
-                                                class="btn btn-primary">Ajouter
+                                                class="btn btn-primary"><span class="bi bi-plus"></span>Ajouter
                                                 une
                                                 Formation</a>
                                         </li>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <td>
                                                 <a class="text-primary "
-                                                    href="{{ route('admin.chapters.create', $course->slug) }}">{{ $course->title }}</a>
+                                                    href="{{ route('admin.courses.show', $course) }}">{{ $course->title }}</a>
                                             </td>
                                             <td><img alt="{{ $course->title }}" src="{{ Storage::url($course->image) }}"
                                                     class="img-fluid" width="70" />
