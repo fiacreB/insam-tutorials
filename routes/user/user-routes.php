@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\BookCategoryController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\user\PostController;
 use App\Http\Controllers\User\ExamenController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LessonController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\user\LessonController;
+use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\user\CourseController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ChapterController;
@@ -86,12 +86,12 @@ Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], functi
     });
 });
 
-Route::group([
-    'prefix' => '/',
-    'as' => '/'
-], function () {
-    Route::get('courses', [CourseController::class, 'index']);
-    Route::get('courses/{slug}', [CourseController::class, 'show'])->name('show');
-});
+// Route::group([
+//     'prefix' => '/',
+//     'as' => '/'
+// ], function () {
+//     Route::get('courses', [CourseController::class, 'index']);
+//     Route::get('courses/{slug}', [CourseController::class, 'show'])->name('show');
+// });
 
-Route::get('/courses', [CourseController::class, 'index']);
+// Route::get('/courses', [CourseController::class, 'index']);

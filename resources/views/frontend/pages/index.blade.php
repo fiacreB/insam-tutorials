@@ -11,9 +11,9 @@
                             <div class="container">
                                 <div class="row home-content">
                                     <div class="col-lg-12 text-center p0">
-                                        <h3 class="banner-title">Self EducatIon Resources and Infos</h3>
-                                        <p>Technology is brining a massive wave of evolution on learning things on different ways.</p>
-                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                        <h3 class="banner-title">Apprendre toujours plus</h3>
+                                        {{-- <p>Technology is brining a massive wave of evolution on learning things on different ways.</p> --}}
+                                        <div class="btn-block"><a href="{{ route('layout-frontend.courses.index') }}" class="banner-btn">Commencer maintenant</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -22,9 +22,9 @@
                             <div class="container">
                                 <div class="row home-content">
                                     <div class="col-lg-12 text-center p0">
-                                        <h3 class="banner-title">Self EducatIon Resources and Infos</h3>
-                                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
-                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                        <h3 class="banner-title">Apprendre toujours plus</h3>
+                                        {{-- <p>Technology is brining a massive wave of evolution on learning things on different ways</p> --}}
+                                        <div class="btn-block"><a href="{{ route('layout-frontend.courses.index') }}" class="banner-btn">Commencer maintenant</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -33,15 +33,15 @@
                             <div class="container">
                                 <div class="row home-content">
                                     <div class="col-lg-12 text-center p0">
-                                        <h3 class="banner-title">Find the Best Courses</h3>
-                                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
-                                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+                                        <h3 class="banner-title">Apprendre toujours plus</h3>
+                                        {{-- <p>Technology is brining a massive wave of evolution on learning things on different ways</p> --}}
+                                        <div class="btn-block"><a href="{{ route('layout-frontend.courses.index') }}" class="banner-btn">Commencer maintenant</a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!-- /.main-banner-wrapper -->
+                </div>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
 
             <div class="col-lg-6 offset-lg-3">
                 <div class="courses_all_btn text-center">
-                    <a class="btn btn-transparent" href="#">Voir toutes les categories</a>
+                    <a class="btn btn-transparent" href="{{ route('layout-frontend.categories.index') }}">Voir toutes les categories</a>
                 </div>
             </div>
         </div>
@@ -149,7 +149,6 @@
                                     <div class="overlay">
                                         <div class="tag">{{$course->category->title}}</div>
                                         <div class="icon"><span class="flaticon-like"></span></div>
-                                        <a class="tc_preview_course" href="#"></a>
                                     </div>
                                 </div>
                                 <div class="details">
@@ -174,7 +173,7 @@
                                         </ul>
                                         <div class="tc_price float-right">
                                             <div class="tag">
-                                                <a href="{{"/courses/$course->slug"}}">Afficher</a>
+                                                <a href="{{ route('layout-frontend.courses.show', $course) }}">Afficher</a>
                                                 
                                             </div>
                                         </div>
@@ -188,7 +187,7 @@
                          
                         <div class="col-lg-6 offset-lg-3">
                             <div class="courses_all_btn text-center">
-                                <a class="btn btn-transparent" href="/courses">Voir toutes les formations</a>
+                                <a class="btn btn-transparent" href="{{ route('layout-frontend.lessons.index') }}">Voir toutes les formations</a>
                             </div>
                         </div>
                      </div>
