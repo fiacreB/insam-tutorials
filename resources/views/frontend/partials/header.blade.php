@@ -35,11 +35,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><span class="title">Bibliotheque</span></a>
-                    <ul>
-                        <li><a href="page-event.html">Event List</a></li>
-                        <li><a href="page-event-single.html">Event Single</a></li>
-                    </ul>
+                    <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
                 </li>
                 <li class="last">
                     <a href="/contact"><span class="title">Contact</span></a>

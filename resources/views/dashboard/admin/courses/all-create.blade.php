@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('/assets-admin/js/ckeditor.js') }}"></script>
+        <script src="{{ asset('/admin/js/ckeditor.js') }}"></script>
         <script>
             ClassicEditor
                 .create(document.querySelector('#description'), {})
