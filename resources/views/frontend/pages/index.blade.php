@@ -73,16 +73,27 @@
         <div class="row">
 
             @forelse ($categories as $category)
-                <div class="col-sm-6 col-lg-3">
-                    <div class="img_hvr_box" style="background-image: url({{ Storage::url($category->image)}});">
-                        <div class="overlay">
-                            <div class="details">
-                                <h5>{{$category->title}}</h5>
-                                <p>{{$category->description}}</p>
-                            </div>
+            <div class="col-sm-6 col-lg-6 col-xl-4">
+                <div class="team_member style3 text-center mb30">
+                    <div class="instructor_col">
+                        <div class="thumb">
+                            <img class="img-fluid img-rounded-circle" src="{{ Storage::url($category->image) }}" alt="7.png">
+                        </div>
+                        <div class="details">
+                            <h4>{{ $category->title }}</h4>
+                            <p>{{ $category->description }}</p>
+                            <ul>
+                            </ul>
                         </div>
                     </div>
+                    <div class="tm_footer">
+                        <ul>
+                            <li class="list-inline-item">Date {{$category->updated_at}}</li>
+                            <a href="{{ route('layout-frontend.categories.showcourse', $category) }}" class="text-primary">Decouvrir les cours</a>
+                        </ul>
+                    </div>
                 </div>
+            </div>
             @empty
                 
             <div class="col-sm-6 col-lg-3">
@@ -90,8 +101,6 @@
                     <div class="overlay">
                         <div class="details">
                             <h5>Pas de cours pour le moment</h5>
-                            <p>Over 800 Courses</p>
-                        </div>
                     </div>
                 </div>
             </div>
