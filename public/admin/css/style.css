@@ -5345,8 +5345,9 @@ header.header-nav.menu_style_home_seven .ace-responsive-menu > li.last{
 }
 /*== Inner Pages Breadcrumb ==*/
 .inner_page_breadcrumb {
-  background-image: url(../images/background/inner-pagebg.jpg);
+  background-image: url(../images/books.jpg);
   background-repeat: no-repeat;
+  background-position: 100%;
   height: 400px;
   margin-top: -1px;
   position: relative;

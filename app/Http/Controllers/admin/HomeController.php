@@ -34,12 +34,11 @@ class HomeController extends Controller
     public function adminDashboard(Request $request)
     {
         $query = $request->get('query');
-        $admin_search = null;
         $admin_search = User::where('name', 'LIKE', '%' . $query . '%')->get();
         if ($request->has('search')) {
             $admins = User::all();
             $admin_search = $request->search;
-            $admins = $admins->where('name', 'like', '%' . $admin_search . '%');
+            $admins =  User::where('name', 'like', '%' . $admin_search . '%');
         } else {
             $admins = User::where([['role', '=', 'admin'], ['is_super_admin', '=', null]])->get();
         }

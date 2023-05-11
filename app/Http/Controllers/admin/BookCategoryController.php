@@ -27,11 +27,10 @@ class BookCategoryController extends Controller
     {
         $query = $request->get('query');
         $admin_search = BookCategory::where('title', 'LIKE', '%' . $query . '%')->orderBy('created_at', 'desc')->paginate(10);
-        $admin_search = null;
         $bookCategories = BookCategory::orderBy('created_at', 'desc')->paginate(10);
         if ($request->has('search')) {
             $admin_search = $request->search;
-            $bookCategories = $bookCategories->where('title', 'like', '%' . $admin_search . '%')->orderBy('created_at', 'desc')->paginate(10);
+            $bookCategories = BookCategory::where('title', 'like', '%' . $admin_search . '%')->orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.admin.bibliotheque.book_categories.index',  compact('bookCategories'));
     }
@@ -69,19 +68,7 @@ class BookCategoryController extends Controller
         return redirect()->route('admin.book_categories.index')->with('success', 'Biblithèque crée avec success');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $bookCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BookCategory $bookCategory)
-    {
-        $categories = Category::all();
-        $sujets = Chapter::all();
-        $cours = Lesson::all();
-        return view('layout-frontend.book_categories.show', compact('bookCategory', 'categories', 'sujets', 'cours'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.

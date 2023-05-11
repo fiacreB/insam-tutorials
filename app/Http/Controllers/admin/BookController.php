@@ -28,11 +28,10 @@ class BookController extends Controller
     {
         $query = $request->get('query');
         $admin_search = Book::where('title', 'LIKE', '%' . $query . '%')->orderBy('created_at', 'desc')->paginate(10);
-        $admin_search = null;
         $books = Book::orderBy('created_at', 'desc')->paginate(10);
         if ($request->has('search')) {
             $admin_search = $request->search;
-            $books = $books->where('title', 'like', '%' . $admin_search . '%')->orderBy('created_at', 'desc')->paginate(10);
+            $books = Book::where('title', 'like', '%' . $admin_search . '%')->orderBy('created_at', 'desc')->paginate(10);
         }
         $user = Auth::user()->id;
         $bookCategory = Book::with('category')->first();
@@ -133,23 +132,7 @@ class BookController extends Controller
         return redirect()->route('admin.book_categories.show', ['bookCategory' => $bookCategory])->with('success', 'Livre créer avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        $book->fill([
-            'views' => $book->views + 1
-        ]);
-        $book->save();
-        $categories = Category::all();
-        $sujets = Chapter::all();
-        $cours = Lesson::all();
-        return view('layout-frontend.book.show', compact('book', 'sujets', 'categories', 'cours'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
