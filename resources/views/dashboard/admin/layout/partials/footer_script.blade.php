@@ -22,3 +22,4 @@
 <script type="text/javascript" src="{{ asset('/admin/js/dashboard-script.js') }}"></script>
 <!-- Custom script for all pages -->
 <script type="text/javascript" src="{{ asset('/admin/js/script.js') }}"></script>
+<script src="{{ asset('/admin/js/jquery.form.js') }}"></script>

@@ -3,11 +3,11 @@
             Dashboard</a></li>
     <li><a href="{{ route('admin.categories.index') }}"><span class="flaticon-online-learning"></span>
             Categories Cours</a></li>
-    <li><a href="{{ route('admin.courses.index') }}"><span class="flaticon-add-contact"></span> Cours</a></li>
+    <li><a href="{{ route('admin.courses.index') }}"><i class="bi bi-bookmarks"></i> Cours</a></li>
 
-    <li><a href="{{ route('admin.chapters.index') }}"><span class="flaticon-shopping-bag-1"></span>
+    <li><a href="{{ route('admin.chapters.index') }}"><i class="bi bi-bookmark"></i>
             Mes Chapitres</a></li>
-    <li><a href="{{ route('admin.lessons.allVideos') }}"><span class="flaticon-speech-bubble"></span>
+    <li><a href="{{ route('admin.lessons.allVideos') }}"><i class="bi bi-camera-reels"></i>
             Mes Videos</a></li>
     {{-- <li><a href="page-my-review.html"><span class="flaticon-rating"></span>
             Reviews</a></li>
@@ -16,7 +16,7 @@
 </ul>
 <h4>Examen</h4>
 <ul>
-    <li><a href="{{ route('admin.tests.index') }}"><span class="bi bi-file-earmark-person"></span>
+    <li><a href="{{ route('admin.tests.index') }}"><i class="bi bi-microsoft-teams"></i>
             All Exams</a></li>
 
     <li><a href="{{ route('admin.tests.loadMarks') }}"><span class="bi bi-file-earmark-person"></span>

@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="custom-file">
                                         <input type="file" accept="video/*" multiple class="custom-file-input"
-                                            id="video" value="link" name="videos[]" placeholder="Video">
+                                            id="video" value="link" name="videos[]" placeholder="Video" required>
                                         <label class="custom-file-label">Choose file</label>
                                     </div>
                                 </div>
