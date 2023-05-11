@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <a href="#" class="navbar_brand float-left dn-smd">
+            <a href="{{ route('dashboard') }}" class="navbar_brand float-left dn-smd">
                 <img class="logo1 img-fluid" src="{{ asset('/admin/images/header-logo.png') }}" alt="header-logo.png">
                 <img class="logo2 img-fluid" src="{{ asset('/admin/images/header-logo.png') }}" alt="header-logo.png">
                 <span>edumy</span>
@@ -22,9 +22,9 @@
             <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
             <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
                 <li>
-                    <a href="#"><span class="title">Home</span></a>
+                    <a href="/"><span class="title">Home</span></a>
                     <!-- Level Two-->
-                    <ul>
+                    {{-- <ul>
                         <li><a href="index.html">Home 1</a></li>
                         <li><a href="index2.html">Home 2</a></li>
                         <li><a href="index3.html">Home 3</a></li>
@@ -46,9 +46,9 @@
                             </ul>
                         </li>
 
-                    </ul>
+                    </ul> --}}
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#"><span class="title">Courses</span></a>
                     <!-- Level Two-->
                     <ul>
@@ -141,7 +141,7 @@
                 </li>
                 <li class="last">
                     <a href="page-contact.html"><span class="title">Contact</span></a>
-                </li>
+                </li> --}}
             </ul>
             <ul class="header_user_notif pull-right dn-smd">
                 <li class="user_notif">
@@ -256,14 +256,13 @@
                                 class="rounded-circle" /></a>
                         <div class="dropdown-menu">
                             <div class="user_set_header">
-                                <img class="float-left" src="{{ asset('/admin/images/team/e1.png') }}"
-                                    alt="e1.png">
-                                <p>Kim Hunter <br><span class="address">kimhunter@gmail.com</span></p>
+                                <img class="float-left" src="{{ Storage::url($user->image) }}" alt="e1.png">
+                                <p>{{ $user->name }} <br><span class="address">{{ $user->email }}</span></p>
                             </div>
                             <div class="user_setting_content">
-                                <a class="dropdown-item active" href="#">My Profile</a>
-                                <a class="dropdown-item" href="#">Messages</a>
-                                <a class="dropdown-item" href="#">Purchase history</a>
+                                <a class="dropdown-item active"
+                                    href="{{ route('admin.settingDashboard', ['user' => Auth::user()->id]) }}">My
+                                    Profile</a>
                                 <a class="dropdown-item" href="#">Help</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -300,8 +299,10 @@
     </div><!-- /.mobile-menu -->
     <nav id="menu" class="stylehome1">
         <ul>
-            <li><span>Home</span>
-                <ul>
+            <a href="/">
+                <li><span>Home</span>
+            </a>
+            {{-- <ul>
                     <li><a href="index.html">Home 1</a></li>
                     <li><a href="index2.html">Home 2</a></li>
                     <li><a href="index3.html">Home 3</a></li>
@@ -321,9 +322,9 @@
                         </ul>
                     </li>
 
-                </ul>
+                </ul> --}}
             </li>
-            <li><span>Courses</span>
+            {{-- <li><span>Courses</span>
                 <ul>
                     <li><span>Courses List</span>
                         <ul>
@@ -402,10 +403,10 @@
                     <li><a href="page-blog-list4.html">New Blog List 6</a></li>
                     <li><a href="page-blog-single.html">Single Post</a></li>
                 </ul>
-            </li>
-            <li><a href="page-contact.html">Contact</a></li>
+            </li> --}}
+            {{-- <li><a href="page-contact.html">Contact</a></li> --}}
             <li><a href="page-login.html"><span class="flaticon-user"></span> Login</a></li>
-            <li><a href="page-register.html"><span class="flaticon-edit"></span> Register</a></li>
+            {{-- <li><a href="page-register.html"><span class="flaticon-edit"></span> Register</a></li> --}}
         </ul>
     </nav>
 </div>
