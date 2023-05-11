@@ -21,11 +21,17 @@ use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
+    public function index()
+    {
+        $chapters = Chapter::with('exams')->get();
+        $exams = Exam::orderBy('created_at', 'desc')->with('chapter')->paginate(10);
+        return view('dashboard.admin.exams.index', compact('exams', 'chapters'));
+    }
     public function create(Chapter $chapter)
     {
         $questions = Question::with('answers')->get();
 
-        return view('admin.tests.create', compact('questions', 'chapter'));
+        return view('dashboard.admin.tests.create', compact('questions', 'chapter'));
     }
 
     //add Q&A
@@ -85,7 +91,7 @@ class TestController extends Controller
     {
         $id = $question->chapters_id;
         $question->delete();
-        return redirect()->route('admin.tests.create', $id);
+        return back()->with('success', 'Deleted');
     }
     public function updateQna(Request $request)
     {
@@ -148,10 +154,9 @@ class TestController extends Controller
 
     public function examDashboard(Chapter $chapter, Exam $exam)
     {
-
         $chapters = Chapter::all();
-        $exams = Exam::all();
-        return view('admin.exams.exam-dashboard', compact('chapter', 'chapters', 'exams', 'exam'));
+        $exams = Exam::orderBy('created_at', 'desc')->paginate(10);
+        return view('dashboard.admin.exams.create', compact('chapter', 'chapters', 'exams', 'exam'));
     }
 
 

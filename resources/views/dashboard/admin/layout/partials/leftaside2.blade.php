@@ -1,20 +1,24 @@
 <ul>
     <li class="active"><a href="{{ route('dashboard') }}"><span class="flaticon-puzzle-1"></span>
             Dashboard</a></li>
-    <li><a href="page-my-courses.html"><span class="flaticon-online-learning"></span>
-            My Courses</a></li>
-    <li><a href="page-my-order.html"><span class="flaticon-shopping-bag-1"></span>
-            Order</a></li>
-    <li><a href="page-my-message.html"><span class="flaticon-speech-bubble"></span>
-            Messages</a></li>
-    <li><a href="page-my-review.html"><span class="flaticon-rating"></span>
+    <li><a href="{{ route('admin.categories.index') }}"><span class="flaticon-online-learning"></span>
+            Categories Cours</a></li>
+    <li><a href="{{ route('admin.courses.index') }}"><span class="flaticon-add-contact"></span> Cours</a></li>
+
+    <li><a href="{{ route('admin.chapters.index') }}"><span class="flaticon-shopping-bag-1"></span>
+            Mes Chapitres</a></li>
+    <li><a href="{{ route('admin.lessons.allVideos') }}"><span class="flaticon-speech-bubble"></span>
+            Mes Videos</a></li>
+    {{-- <li><a href="page-my-review.html"><span class="flaticon-rating"></span>
             Reviews</a></li>
     <li><a href="page-my-bookmarks.html"><span class="flaticon-like"></span>
-            Bookmarks</a></li>
-    <li><a href="{{ route('admin.courses.index') }}"><span class="flaticon-add-contact"></span> Formation</a></li>
+            Bookmarks</a></li> --}}
 </ul>
 <h4>Examen</h4>
 <ul>
+    <li><a href="{{ route('admin.tests.index') }}"><span class="bi bi-file-earmark-person"></span>
+            All Exams</a></li>
+
     <li><a href="{{ route('admin.tests.loadMarks') }}"><span class="bi bi-file-earmark-person"></span>
             Marks</a></li>
     <li><a href="{{ route('admin.exams.reviewExams') }}"><span class="bi bi-hand-thumbs-up "></span>
