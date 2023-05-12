@@ -3,8 +3,8 @@
 
 use App\Http\Controllers\user\BookCategoryController;
 use App\Http\Controllers\user\BookController;
-use App\Http\Controllers\User\PostController;
-use App\Http\Controllers\User\ExamenController;
+use App\Http\Controllers\user\PostController;
+use App\Http\Controllers\user\ExamenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user\LessonController;
 use App\Http\Controllers\user\CategoryController;
@@ -37,6 +37,7 @@ Route::get('/search/{search}', [LessonController::class, 'search'])->name('searc
 //categorie route
 
 Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], function () {
+    Route::get('user/{user}', [PostController::class, 'profile'])->name('profile'); //OK
     Route::group([
         'prefix' => 'categories',
         'as' => 'categories.'
@@ -50,10 +51,11 @@ Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], functi
         Route::get('videos/{chapter}', [LessonController::class, 'videos'])->name('videos'); //OK
         Route::get('resume/{chapter}', [LessonController::class, 'resume'])->name('resume'); //OK
         Route::post('exam-submit/{chapter}', [ExamenController::class, 'examSubmit'])->name('examSubmit');
-        Route::get('get-reviewed-qna{chapter}', [ExamenController::class, 'reviewQna'])->name('reviewQna');
+        Route::get('/get-reviewed-qna', [ExamenController::class, 'reviewQna'])->name('reviewQna');
         Route::get('results/{chapter}', [ExamenController::class, 'resultDashboard'])->name('resultDashboard');
-        Route::get('delete-test/{chapter}', [TestController::class, 'deleteTest'])->name('deleteTest'); //OK
+        Route::get('delete-test/{attempt}', [ExamenController::class, 'deleteTest'])->name('deleteTest'); //OK
         Route::get('/video/{video}', [ChapterController::class, 'showVideo'])->name('video');
+        Route::post('/approved-qna', [ExamenController::class, 'approvedQna'])->name('approvedQna');
     });
     Route::group([
         'prefix' => 'book_categories',

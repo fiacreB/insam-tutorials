@@ -1,5 +1,4 @@
 @extends('frontend.partials.main')
-
 @section('content')
 
 <?php
@@ -37,7 +36,7 @@ use App\Models\Lesson;
 									<div class="cs_ins_container">
 										<div class="cs_instructor">
 											<ul class="cs_instrct_list float-left mb0">
-												<li class="list-inline-item"><img class="thumb" src="{{asset('admin/images/team/4.png')}}" alt="4.png"></li>
+												<li class="list-inline-item"><img class="thumb" src="{{asset('/admin/images/team/4.png')}}" alt="4.png"></li>
 												
 												<li class="list-inline-item"><a href="#">Derniere mise a jour {{$course->updated_at}}</a></li>
 											</ul>
@@ -52,30 +51,28 @@ use App\Models\Lesson;
                                         if (sizeof($chapters) > 0) {
                                             $first = Lesson::where('chapter_id', $chapters[0]->id)->first();
                                             ?>
-                                            
-                                        
-										<div class="courses_big_thumb">
-											<div class="thumb">
-                                                {{-- @if (!$video->video_link) --}}
-                                                <video controls controlsList='nodownload' src="{{ Storage::url($first->video_path) }}"
-                                                    width="100%" class="img"></video>
-                                                {{-- @else
-                                                    @if ($video->video_provider == 'youtube' && isset(explode('=', $video->video_link)[1]))
-                                                        <iframe class="iframe_video" frameborder="0" allowfullscreen
-                                                            src="https://www.youtube.com/embed/{{ explode('=', $video->video_link)[1] }}"
-                                                            width="100%" height="400" style='min-height: 500px'> </iframe>
-                                                    @elseif ($video->video_provider == 'dailymotion' && isset(explode('video/', $video->video_link)[1]))
-                                                        <iframe class="embed-responsive-item img"
-                                                            src="https://www.dailymotion.com/embed/video/{{ explode('video/', $video->video_link)[1] }}"></iframe>
-                                                    @elseif ($video->video_provider == 'vimeo' && isset(explode('vimeo.com/', $video->video_link)[1]))
-                                                        <iframe class="embed-responsive-item img"
-                                                            src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $video->video_link)[1] }}"
-                                                            width="500" height="281" frameborder="0" webkitallowfullscreen
-                                                            mozallowfullscreen allowfullscreen></iframe>
-                                                    @endif
-                                                @endif --}}
-											</div>
-										</div>
+                                            <div class="courses_big_thumb">
+                                                <div class="thumb">
+                                                    {{-- @if (!$video->video_link) --}}
+                                                    <video controls controlsList='nodownload' src="{{ Storage::url($first->video_path) }}"
+                                                        width="100%" class="img"></video>
+                                                    {{-- @else
+                                                        @if ($video->video_provider == 'youtube' && isset(explode('=', $video->video_link)[1]))
+                                                            <iframe class="iframe_video" frameborder="0" allowfullscreen
+                                                                src="https://www.youtube.com/embed/{{ explode('=', $video->video_link)[1] }}"
+                                                                width="100%" height="400" style='min-height: 500px'> </iframe>
+                                                        @elseif ($video->video_provider == 'dailymotion' && isset(explode('video/', $video->video_link)[1]))
+                                                            <iframe class="embed-responsive-item img"
+                                                                src="https://www.dailymotion.com/embed/video/{{ explode('video/', $video->video_link)[1] }}"></iframe>
+                                                        @elseif ($video->video_provider == 'vimeo' && isset(explode('vimeo.com/', $video->video_link)[1]))
+                                                            <iframe class="embed-responsive-item img"
+                                                                src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $video->video_link)[1] }}"
+                                                                width="500" height="281" frameborder="0" webkitallowfullscreen
+                                                                mozallowfullscreen allowfullscreen></iframe>
+                                                        @endif
+                                                    @endif --}}
+                                                </div>
+                                            </div>
                                         @php
                                         }
                                         @endphp
@@ -89,7 +86,7 @@ use App\Models\Lesson;
 										{{-- <h4 class="title">Overview</h4> --}}
 										<h4 class="subtitle">Description de la formation</h4>
 										<p class="mb30">
-                                            {{$course->description}}
+                                            {!! $course->description !!}
                                         </p>
 										
 									</div>
@@ -111,6 +108,7 @@ use App\Models\Lesson;
 												      	<h4 class="panel-title">
 												        	<a href="#panelBodyCourseStart" class="accordion-toggle link" data-toggle="collapse" data-parent="#accordion">{{ $chapter->title }}</a>
 												        </h4>
+                                                            <a href="{{route('layout-frontend.categories.examen', $chapter)}}" class="text-info text-right"> <span class="bi text-danger bi-exclamation-diamond mr-3"></span><b><u>Passer le test</u></b> </a>
 											      	</div>
 												    <div id="panelBodyCourseStart" class="panel-collapse collapse show">
 												        <div class="panel-body">

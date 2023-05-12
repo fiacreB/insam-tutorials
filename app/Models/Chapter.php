@@ -39,6 +39,10 @@ class Chapter extends Model
     {
         return $this->hasMany('\App\Models\Exam', 'chapter_id');
     }
+    public function exam_attempts()
+    {
+        return $this->hasMany(ExamAttempt::class, 'chapter_id');
+    }
     public function getRouteKeyName()
     {
         return 'slug';
