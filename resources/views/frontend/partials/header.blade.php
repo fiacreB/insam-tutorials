@@ -44,19 +44,22 @@
             <ul class="header_user_notif pull-right dn-smd">
                 <li class="user_setting">
                     <div class="dropdown">
+
                         @auth
-                            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-                                {{ Auth::user()->email }}
-                                {{-- <img alt="{{ $user->name }}" src="{{ Storage::url($user->image) }}" class="rounded-circle" /> --}}
-                            </a>
+                            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img
+                                    alt="{{ Auth::user()->name }}" src="{{ Storage::url(Auth::user()->image) }}"
+                                    class="rounded-circle" /></a>
                             <div class="dropdown-menu">
                                 <div class="user_set_header">
-                                    <img class="float-left" src="{{ asset('/admin/images/team/e1.png') }}" alt="e1.png">
+                                    <img class="float-left" src="{{ Storage::url(Auth::user()->image) }}" alt="e1.png">
                                     <p>{{ Auth::user()->name }} <br><span class="address">{{ Auth::user()->email }}</span>
                                     </p>
                                 </div>
                                 <div class="user_setting_content">
-                                    <a class="dropdown-item active" href="#">My Compte</a>
+                                    <a class="dropdown-item active"
+                                        href="{{ route('layout-frontend.profile', ['user' => Auth::user()->id]) }}">My
+                                        Profile</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

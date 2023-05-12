@@ -294,18 +294,4 @@ class TestController extends Controller
             return response()->json(['success' => false, 'msg' => $e->getMessage()]);
         }
     }
-
-    public function deleteTest(ExamAttempt $examAttempt, Chapter $chapter, Category $category)
-    {
-        $categories = Category::all();
-
-        $chapters = Chapter::all();
-
-        $lesson = Lesson::all();
-        $questions = Question::all();
-
-        $attempts = ExamAttempt::where('user_id', Auth()->user()->id)->with('chapter')->delete();
-
-        return view('layout-frontend.categories.examen', compact('category', 'attempts', 'chapter', 'categories', 'chapters', 'lesson', 'questions'));
-    }
 }

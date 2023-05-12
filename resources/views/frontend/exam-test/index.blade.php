@@ -1,4 +1,6 @@
+<script src="{{ asset('/admin/js/jquery.min.js') }}"></script>
 @extends('frontend.partials.main')
+@section('title', 'exam Test ')
 @section('content')
     @if ($chapter->questions->count() > 0)
 
@@ -11,7 +13,7 @@
                                 {{ $chapter->title }}</b>
                         </h3>
                         <thead class="text-white  col-xs-1 text-center">
-                            <th><b class="h4 text-white"> Pour chacune des questions, selectionner la bonne reponse.
+                            <th><b class="h4"> Pour chacune des questions, selectionner la bonne reponse.
                                 </b>
                                 @foreach ($chapter->exams as $exam)
                                     <b>
@@ -47,7 +49,8 @@
                                                 <div class="form-group form-check">
                                                     <input type="radio" name="radio_{{ $questioncount - 1 }}"
                                                         value="{{ $answer->id }}" data-id="{{ $questioncount - 1 }}"
-                                                        class=" select_ans form-check-input me-3" id="exampleCheck1">
+                                                        class=" select_ans form-check-input me-3" id="exampleCheck1"
+                                                        required>
                                                     <label class="form-check-label h6 " for="exampleCheck1"><b
                                                             class="me-2 text-white">{{ $answercount++ }})</b>{{ $answer->answer }}</label>
                                                 </div>
@@ -59,23 +62,23 @@
                                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                                         <div class="course-item">
                                             <div class="course-content">
-                                                <h1><a href="#" class="text-center text-danger mt-4">Aucun test
+                                                <h4><a href="#" class="text-center text-danger mt-4">Aucun test
                                                         pour
                                                         l'instant</a>
-                                                </h1>
+                                                </h4>
                                             </div>
                                         </div>
                                     </div>
                                 @endforelse
                             @else
-                                <h1 class="text-center mt-4 text-danger">pas de test pour l'instant</h1>
+                                <h4 class="text-center mt-4 text-danger">pas de test pour l'instant</h4>
                             @endif
                         </tbody>
 
                     </table>
                     @if ($chapter->questions->count() > 0)
                         <div class="me-4 mx-4 py-4 text-center">
-                            <input class="btn btn-success" type="submit" value="soumettre mes réponses">
+                            <input class="btn btn-primary" type="submit" value="soumettre mes réponses">
                         </div>
                     @else
                     @endif
@@ -214,9 +217,9 @@
                                             <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                                                 <div class="course-item">
                                                     <div class="course-content">
-                                                        <h1><a href="#" class="text-center text-danger">Aucun test
+                                                        <h4><a href="#" class="text-center text-danger">Aucun test
                                                                 pour
-                                                                l'instant</a></h1>
+                                                                l'instant</a></h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -227,7 +230,7 @@
                                 </table>
 
                                 <div class="me-4 mx-4 py-4 text-center">
-                                    <input class="btn btn-success" type="submit" value="soumettre mes réponses">
+                                    <input class="btn btn-primary" type="submit" value="soumettre mes réponses">
                                 </div>
                             </form>
                         </div>
@@ -306,6 +309,6 @@
 
         @endif
     @else
-        <h1 class="text-center">pas de test pour l'instant</h1>
+        <h4 class="text-center">Pas de test pour l'instant</h4>
     @endif
 @endsection
