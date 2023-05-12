@@ -19,84 +19,108 @@
         </section>
         
         <!-- Our Courses List -->
-<section class="courses-list pb40">
-    <div class="container">
-        <div class="row">
-            
-            <div class="col-md-12 col-lg-12 col-xl-12 shadow_box">
-                <div class="row courses_list_heading">
-                    <div class="col-xl-4 p0">
-                        <div class="instructor_search_result style2">
-                            <p class="mt10 fz15"><span class="color-dark pr10"> {{count($courses)}} </span> results</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row courses_container">
-                    @forelse ($courses as $course)
-                    <div class="col-lg-12 p0 m-2">
-                        <div class="courses_list_content">
-                            <div class="top_courses list">
-                                <div class="thumb">
-                                    <img class="img-whp" src="{{ Storage::url($course->image)}}" alt="t1.jpg">
-                                    <div class="overlay">
-                                        {{-- <div class="icon"><span class="flaticon-like"></span></div>
-                                        <a class="tc_preview_course" href="#">Preview Course</a> --}}
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div class="tc_content">
-                                        <p>{{$course->category->title}}</p>
-                                        <h5>{{$course->title}}</h5>
-                                        <p>
-                                            {{$course->description}}
-                                        </p>
-                                    </div>
-                                    <div class="tc_footer">
-                                        {{-- <ul class="tc_meta float-left fn-414">
-                                            <li class="list-inline-item"><a href="#"><i class="flaticon-profile"></i></a></li>
-                                            <li class="list-inline-item"><a href="#">1548</a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="flaticon-comment"></i></a></li>
-                                            <li class="list-inline-item"><a href="#">25</a></li>
-                                        </ul> --}}
-                                        <div class="tc_price float-right fn-414">
-                                            <a class="text-success" href="{{ route('layout-frontend.courses.show', $course) }}">Decouvrir</a>
-                                        </div>
-                                        {{-- <ul class="tc_review float-right fn-414">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#">(5)</a></li> --}}
-                                        </ul>
-                                    </div>
+        <section class="courses-list pb40">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-12 col-lg-8 col-xl-9 shadow_box p-4">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="instructor_search_result style2">
+                                    <p class="mt10 fz15"><span class="color-dark pr10">{{count($courses)}} </span> formations</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    @empty
-                    <div class="item">
-                        <div class="top_courses">
-                            <div class="thumb">
-                                <img class="img-whp" src="{{ asset('admin/images/courses/t1.jpg')}}" alt="t1.jpg">
-                                
-                            </div>
-                            <div class="details">
-                                <div class="tc_content">
-                                    <p>Pas de cours pour le moment</p>
-                                    <ul class="tc_review">
+                            <div class="col-xl-8">
+                                <div class="candidate_revew_select style2 text-right mb25">
+                                    <ul>
+                                        <li class="list-inline-item">
+                                            <div class="candidate_revew_search_box course mb30 fn-520">
+                                                <form class="form-inline my-2 my-lg-0" method="GET" action="/courses/search">
+                                                    @csrf
+                                                    <input class="form-control mr-sm-2" type="search" name="title" placeholder="Rechercher une formation" aria-label="Search">
+                                                    <button class="btn my-2 my-sm-0" type="submit"><span class="flaticon-magnifying-glass"></span></button>
+                                                </form>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            @forelse ($courses as $course)
+                            <div class="col-lg-6 col-xl-4">
+                                <div class="top_courses">
+                                    <div class="thumb">
+                                        <img class="img-whp" height="300" src="{{ Storage::url($course->image)}}" alt="t1.jpg">
+                                        <div class="overlay">
+                                        </div>
+                                    </div>
+                                    <div class="details">
+                                        <div class="tc_content">
+                                            <p>{{$course->category->title}}</p>
+                                            <h5>{{$course->title}}</h5>
+                                            <ul class="tc_review">
+                                            </ul>
+                                        </div>
+                                        <div class="tc_footer text-center">
+                                            <div class="tc_price">
+                                                <a class="btn btn-transparent" href="{{ route('layout-frontend.courses.show', $course) }}">Commencer maintenant</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                            <div class="item">
+                                <div class="top_courses">
+                                    <div class="thumb">
+                                        <img class="img-whp" src="{{ asset('admin/images/courses/t1.jpg')}}" alt="t1.jpg">
+                                        
+                                    </div>
+                                    <div class="details">
+                                        <div class="tc_content">
+                                            <p>Pas de cours pour le moment</p>
+                                            <ul class="tc_review">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforelse
+        
+                            
+        
+                        </div>
+                        {!! $courses->links() !!}
+                        
                     </div>
-                    @endforelse
+                    <div class="col-lg-4 col-xl-3">
+                        <div class="instructor_pricing_widget">
+                            
+                            <h5 class="subtitle text-left color-dark">Categories</h5>
+                            <ul class="price_quere_list text-left">
+                                @foreach ($categories as $category)
+                                <li><a  href="{{ route('layout-frontend.categories.showcourse', $category) }}">{{ $category->title }}</li>
+                                @endforeach
+                                
+                            </ul>
+                        </div>
+                        <div class="feature_course_widget">
+                            <ul class="list-group">
+                                <h4 class="title">Dernieres formations</h4>
+
+                                @foreach ($new_courses as $course)
+                                    <li class="">
+                                        <a href="{{ route('layout-frontend.courses.show', $course) }}">{{ $course->title }}</a>
+                                    </li>
+                                @endforeach
+                                
+                            </ul>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
-           
-           
-        </div>
-    </div>
-</section>
+        </section>
 
 @endsection

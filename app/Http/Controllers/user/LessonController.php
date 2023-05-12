@@ -31,12 +31,22 @@ class LessonController extends Controller
 
         // $chapters = Chapter::all();
         // $lessons = Lesson::all();
-        $courses = Course::all();
+        $categories = Category::limit(10)->get();
+        $courses = Course::paginate(20);
+        $new_courses = Course::limit(10)->get();
 
-
-        return view('frontend.lessons.index', compact('courses'));
+        return view('frontend.lessons.index', compact('courses', 'categories', 'new_courses'));
     }
 
+    public function find(Request $request)
+    {
+        $categories = Category::limit(10)->get();
+        $new_courses = Course::limit(10)->get();
+
+        $courses = Course::where('title', 'LIKE', '%' . $request->title . '%')->paginate(20);
+
+        return view('frontend.lessons.index', compact('courses', 'categories', 'new_courses'));
+    }
     /**
      * Show the form for creating a new resource.
      *

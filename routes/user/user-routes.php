@@ -89,6 +89,9 @@ Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], functi
     });
 });
 
+Route::get('courses/search', [LessonController::class, 'find']);
+Route::get('categories/search', [CategoryController::class, 'find']);
+
 // Route::group([
 //     'prefix' => '/',
 //     'as' => '/'

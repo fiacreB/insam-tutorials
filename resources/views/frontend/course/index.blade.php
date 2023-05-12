@@ -123,19 +123,19 @@ use App\Models\Lesson;
                                                                         <?php if ($first->title == $lesson->title) { ?>
                                                                         <li><a href="#"><span class="flaticon-play-button-1 icon"></span>{{$lesson->title}}</a></li>
                                                                         <?php } else { ?>
-                                                                        <li><a href="#"><span class="flaticon-play-button-1 icon"></span>{{$lesson->title}}</a></li>
+                                                                        <li><a href="#"><span class="flaticon-key-1 icon"></span>{{$lesson->title}}</a></li>
                                                                         <?php } ?>
                                                                     @else
-                                                                    <li><a href="#"><span class="flaticon-play-button-1 icon"></span>{{$lesson->title}}</a></li>
+                                                                    <li><a href="#"><span class="flaticon-key-1 icon"></span>{{$lesson->title}}</a></li>
                                                                         @foreach ($attempts as $attempt)
                                                                             @if ($attempt->marks >= $chapter->pass_marks && $attempt->valid == $chapter->id)
                                                                                 <?php if ($first->title == $lesson->title) { ?>
                                                                                     <li><a href="#"><span class="flaticon-play-button-1 icon"></span>{{$lesson->title}}</a></li>
                                                                                     <?php } else { ?>
-                                                                                    <li><a href="#"><span class="flaticon-play-button-1 icon"></span> {{$lesson->title}}</a></li>
+                                                                                    <li><a href="#"><span class="flaticon-key-1 icon"></span> {{$lesson->title}}</a></li>
                                                                                 <?php } ?>
                                                                             @else
-												        		                <li><a href="#"><span class="flaticon-play-button-1 icon"></span> {{$lesson->title}}</a></li>
+												        		                <li><a href="#"><span class="flaticon-key-1 icon"></span> {{$lesson->title}}</a></li>
                                                                             @endif
                                                                         @endforeach
                                                                     @endif
@@ -168,9 +168,29 @@ use App\Models\Lesson;
 
 							</div>
 						</div>
-
+                    </div>
 				</div>
-
+                <div class="col-lg-4 col-xl-3">
+					<div class="instructor_pricing_widget">
+						<h5 class="subtitle text-left">Chapitres</h5>
+						<ul class="price_quere_list text-left">
+                            @foreach ($chapters as $chapter)
+                                <li><a href="#"><span class=""></span>{{ $chapter->title }}</a></li>
+                            @endforeach
+							
+							{{-- <li><a href="#"><span class="flaticon-key-1"></span> Full lifetime access</a></li> --}}
+					</div>
+					<div class="feature_course_widget">
+						<ul class="list-group">
+							<h4 class="title">Formation recentes</h4>
+                            @foreach ($othersCourses as $course)
+                            <li class="d-flex justify-content-between align-items-center">
+						    	<a href="{{ route('layout-frontend.courses.show', $course) }}">{{$course->title}}</a> 
+							</li>
+                            @endforeach
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

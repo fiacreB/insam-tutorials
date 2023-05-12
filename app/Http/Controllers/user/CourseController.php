@@ -57,8 +57,9 @@ class CourseController extends Controller
 
         $attempts = ExamAttempt::with('chapter')->orderBy('updated_at')->get();
 
+        $othersCourses = Course::inRandomOrder()->limit(10)->get();
 
-        return view('frontend.course.index', compact('course', 'chapters', 'attempts'));
+        return view('frontend.course.index', compact('course', 'chapters', 'attempts', 'othersCourses'));
     }
     // public function show(Course $course){
     //     return view('layout-frontend.categories.videos', compact('course'));
