@@ -35,9 +35,9 @@ Route::get('/', function () {
     $news_courses = Course::all()->sortByDesc('created_at')->take(8);
     $categories = Category::all()->sortByDesc('created_at')->take(8);
     $populars_course = Course::all()->sortByDesc('visits')->take(6);
+    $courses = Course::all();
 
-
-    return view('frontend.index', compact('news_courses', 'categories', 'populars_course'));
+    return view('frontend.pages.index', compact('news_courses', 'categories', 'populars_course', 'courses'));
     // return view('frontend.index');
 });
 
