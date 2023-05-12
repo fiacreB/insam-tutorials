@@ -86,12 +86,15 @@ Route::group(['prefix' => 'layout-frontend', 'as' => 'layout-frontend.'], functi
     });
 });
 
-Route::group([
-    'prefix' => '/',
-    'as' => '/'
-], function () {
-    Route::get('courses', [CourseController::class, 'index']);
-    Route::get('courses/{slug}', [CourseController::class, 'show'])->name('show');
-});
+Route::get('courses/search', [LessonController::class, 'find']);
+Route::get('categories/search', [CategoryController::class, 'find']);
+
+// Route::group([
+//     'prefix' => '/',
+//     'as' => '/'
+// ], function () {
+//     Route::get('courses', [CourseController::class, 'index']);
+//     Route::get('courses/{slug}', [CourseController::class, 'show'])->name('show');
+// });
 
 Route::get('/courses', [CourseController::class, 'index']);
