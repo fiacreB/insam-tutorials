@@ -25,7 +25,7 @@
                     <a href="/"><span class="title">Accueil</span></a>
                 </li>
                 <li>
-                    <a href="/courses"><span class="title">Formations</span></a>
+                    <a href="#"><span class="title">Formations</span></a>
                     <!-- Level Two-->
                     <ul>
                         <li>

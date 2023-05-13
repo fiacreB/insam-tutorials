@@ -4,6 +4,11 @@
 <head>
     @include('frontend.partials.head')
 </head>
+<style>
+    .top {
+        margin-top: -100px;
+    }
+</style>
 
 <body>
     <div class="wrapper">
@@ -25,7 +30,7 @@
                             </div>
                         @endif
 
-                            
+
                     </div>
                 </div>
             </div>

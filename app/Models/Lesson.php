@@ -22,7 +22,8 @@ class Lesson extends Model
     ];
 
 
-    public function chapter(){
+    public function chapter()
+    {
         return $this->belongsTo(Chapter::class);
     }
 
@@ -34,5 +35,4 @@ class Lesson extends Model
     {
         return 'slug';
     }
-
 }
