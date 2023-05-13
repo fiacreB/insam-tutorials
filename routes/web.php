@@ -33,11 +33,12 @@ Auth::routes(
 
 Route::get('/', function () {
     $news_courses = Course::all()->sortByDesc('created_at')->take(8);
-    $categories = Category::all()->sortByDesc('created_at')->take(8);
+    $categories = Category::all()->sortByDesc('created_at')->take(9);
     $populars_course = Course::all()->sortByDesc('visits')->take(6);
     $courses = Course::all();
+    $lessons = Lesson::limit(10)->orderBy('created_at', 'desc')->get();
 
-    return view('frontend.pages.index', compact('news_courses', 'categories', 'populars_course', 'courses'));
+    return view('frontend.pages.index', compact('news_courses', 'lessons', 'categories', 'populars_course', 'courses'));
     // return view('frontend.index');
 });
 
@@ -58,8 +59,10 @@ Route::get('/', function () {
 //     require __DIR__ . '/user/user-routes.php';
 //     Route::get('/review-student-qna', [ExamenController::class, 'reviewStudentQna'])->name('resultStudentQna');
 // });
-require __DIR__ . '/user/user-routes.php';
+Route::middleware(['auth'])->group(function () {
+    require __DIR__ . '/user/user-routes.php';
+})->middleware('verified');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     require __DIR__ . '/admin/admin-routes.php';
-});
+})->middleware('verified');

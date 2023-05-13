@@ -126,14 +126,4 @@ class ChapterController extends Controller
 
         return view('layout-frontend.categories.show', compact('course', 'questions', 'chapter'));
     }
-
-
-    public function showVideo(Lesson $video, Course $course, Chapter $chapter)
-    {
-        $categories = Category::all();
-        $courses = Course::all();
-        $chapters = Chapter::all();
-        $cours = Lesson::all();
-        return view('layout-frontend.categories.one-video', compact('chapter', 'course', 'video', 'categories', 'chapters', 'cours', 'courses'));
-    }
 }

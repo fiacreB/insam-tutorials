@@ -33,11 +33,9 @@ class CategoryController extends Controller
 
         $new_categories = Category::limit(10)->orderBy('created_at', 'desc')->get();
         $new_courses = Course::limit(10)->orderBy('created_at', 'desc')->get();
-
-
         $categories = Category::where('title', 'LIKE', '%' . $request->title . '%')->paginate(20);
-
-        return view('frontend.categories.index', compact('categories', 'new_categories', 'new_courses'));
+        $lessons = Lesson::limit(10)->orderBy('created_at', 'desc');
+        return view('frontend.categories.index', compact('categories', 'lessons', 'new_categories', 'new_courses'));
     }
 
     public function index(Category $category, Chapter $chapter)
@@ -47,9 +45,9 @@ class CategoryController extends Controller
 
         $new_categories = Category::limit(10)->orderBy('created_at', 'desc')->get();
         $new_courses = Course::limit(10)->orderBy('created_at', 'desc')->get();
-
+        $lessons = Lesson::limit(10)->orderBy('created_at', 'desc');
         $categories = Category::paginate(20);
-        return view('frontend.categories.index', compact('chapter', 'category', 'categories', 'chapters', 'lesson', 'new_categories', 'new_courses'));
+        return view('frontend.categories.index', compact('chapter', 'lessons', 'category', 'categories', 'chapters', 'lesson', 'new_categories', 'new_courses'));
     }
 
 
