@@ -2,9 +2,9 @@
 @extends('frontend.partials.main')
 @section('title', 'exam Test ')
 @section('content')
-    @if (($chapter->questions->count() > 0)??)
+    @if ($chapter->questions)
 
-        @if (($chapter->first == 'first'))
+        @if ($chapter->first == 'first')
             <div>
                 <form action="{{ route('layout-frontend.categories.examSubmit', $chapter->slug) }}" method="POST">
                     @csrf
