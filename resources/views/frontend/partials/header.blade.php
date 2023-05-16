@@ -107,19 +107,18 @@
             </li>
             <li><span>Courses</span>
                 <ul>
-                    <li><a href="/courses">Courses List</a>
+                    <li><a href="{{ route('layout-frontend.lessons.index') }}">Courses List</a>
 
                     </li>
-                    <li><a href="/categories">Instructors</a></li>
-                    <li><a href="page-instructors-single.html">Instructor Single</a></li>
                 </ul>
             </li>
             <li>
                 <a href="{{ route('layout-frontend.book_categories.index') }}">Bibliotheque</a>
             </li>
-            <li><a href="page-contact.html">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
             @auth
-                <li><a class="" href="#">Mon Compte</a></li>
+                <li><a class="" href="{{ route('layout-frontend.profile', ['user' => Auth::user()->id]) }}">Mon
+                        Compte</a></li>
                 <li><a class="" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
