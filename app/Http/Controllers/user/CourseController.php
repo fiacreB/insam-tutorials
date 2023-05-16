@@ -41,10 +41,11 @@ class CourseController extends Controller
         // if (!empty($courses) != 1) {
         //     $cours = Lesson::where('course_id', $courses[0]->id)->first();
         // }
+        $new_courses = Course::all()->sortByDesc('created_at');
 
-        $courses = $lessons =  Course::all();
-
-        return view('frontend.lessons.index', compact('courses', 'lessons'));
+        $courses = $lessons =  Course::orderBy('created_at', 'desc')->paginate(6);
+        $categories = Category::orderBy('created_at', 'desc')->get();
+        return view('frontend.lessons.index', compact('courses', 'new_courses', 'categories', 'lessons'));
         // return view('layout-frontend.course.index', compact('courses', 'cours', 'chapter'));
 
     }
@@ -54,12 +55,11 @@ class CourseController extends Controller
 
         $chapters = Chapter::where('course_id', $course->id)->get();
 
-
         $attempts = ExamAttempt::with('chapter')->orderBy('updated_at')->get();
 
         $othersCourses = Course::inRandomOrder()->limit(10)->get();
 
-        return view('frontend.course.index', compact('course', 'chapters', 'attempts', 'othersCourses'));
+        return view('frontend.course.index', compact('course',  'chapters', 'attempts', 'othersCourses'));
     }
     // public function show(Course $course){
     //     return view('layout-frontend.categories.videos', compact('course'));

@@ -10,7 +10,7 @@ use App\Http\Controllers\user\LessonController;
 use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\user\CourseController;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\user\ChapterController;
 use App\Models\course;
 
 /*
