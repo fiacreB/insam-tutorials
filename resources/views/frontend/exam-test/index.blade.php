@@ -2,7 +2,7 @@
 @extends('frontend.partials.main')
 @section('title', 'exam Test ')
 @section('content')
-    @if (($chapter->questions->count() > 0)?:)
+    @if (($chapter->questions->count() > 0)??)
 
         @if (($chapter->first == 'first'))
             <div>
